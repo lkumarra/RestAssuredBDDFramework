@@ -8,14 +8,14 @@ import pojo.Location;
 
 public class TestDataBuild {
 	
-	public GoogleMapJson addPlacePayLoad() {
+	public GoogleMapJson addPlacePayLoad(String name, String language, String addres) {
 		GoogleMapJson json = new GoogleMapJson();
 		json.setAccuracy(10);
 		json.setPhone_number("(+91) 983 893 3937");
-		json.setAddress("29, side layout, cohen 09");
-		json.setName("Frontline house");
+		json.setAddress(addres);
+		json.setName(name);
 		json.setWebsite("http://google.com");
-		json.setLanguage("French-IN");
+		json.setLanguage(language);
 		List<String> types = new ArrayList<String>();
 		types.add("shoe park");
 		types.add("shop");

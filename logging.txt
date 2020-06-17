@@ -16,18 +16,18 @@ Body:
         "lng": 33.427362
     },
     "accuracy": 10,
-    "name": "Frontline house",
+    "name": "AAhouse",
     "phone_number": "(+91) 983 893 3937",
-    "address": "29, side layout, cohen 09",
+    "address": "World Cross Center",
     "types": [
         "shoe park",
         "shop"
     ],
     "website": "http://google.com",
-    "language": "French-IN"
+    "language": "English"
 }
 HTTP/1.1 200 OK
-Date: Tue, 16 Jun 2020 14:15:13 GMT
+Date: Wed, 17 Jun 2020 07:42:55 GMT
 Server: Apache/2.4.18 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
@@ -40,8 +40,55 @@ Content-Type: application/json;charset=UTF-8
 
 {
     "status": "OK",
-    "place_id": "8681e5da94c7f0c5bd4d452985a7c988",
+    "place_id": "18ab0b198d0bd69412c88098efc86fb8",
     "scope": "APP",
-    "reference": "5a028d8a0cdbc00aafdda86f7780c81f5a028d8a0cdbc00aafdda86f7780c81f",
-    "id": "5a028d8a0cdbc00aafdda86f7780c81f"
+    "reference": "9eb7d184602d7e24fb5f5175710b11709eb7d184602d7e24fb5f5175710b1170",
+    "id": "9eb7d184602d7e24fb5f5175710b1170"
+}
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/maps/api/place/add/json?key=qaclick123
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "location": {
+        "lat": 38.383494,
+        "lng": 33.427362
+    },
+    "accuracy": 10,
+    "name": "BBhouse",
+    "phone_number": "(+91) 983 893 3937",
+    "address": "Sea Cross Center",
+    "types": [
+        "shoe park",
+        "shop"
+    ],
+    "website": "http://google.com",
+    "language": "Spanish"
+}
+HTTP/1.1 200 OK
+Date: Wed, 17 Jun 2020 07:42:57 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 194
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "status": "OK",
+    "place_id": "f7121e831a75537987ed21297ac7d7f2",
+    "scope": "APP",
+    "reference": "85f97e42349ede6a94aadb948013631385f97e42349ede6a94aadb9480136313",
+    "id": "85f97e42349ede6a94aadb9480136313"
 }

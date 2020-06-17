@@ -12,6 +12,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import resources.APIResources;
 import resources.TestDataBuild;
 import resources.Utils;
 
@@ -22,15 +23,20 @@ public class StepDefinitations extends Utils {
 	Response response;
 	TestDataBuild testData = new TestDataBuild();
 	
-	@Given("Add Place Payload")
-	public void add_Place_Payload() {
-		res = given().spec(requestSpecification()).body(testData.addPlacePayLoad());
+	@Given("Add Place Payload with {string}{string} and {string}")
+	public void add_Place_Payload_with_and(String name, String language, String address){
+		res = given().spec(requestSpecification()).body(testData.addPlacePayLoad(name, language, address));
 	}
 
-	@When("user calls {string} with Post http request")
-	public void user_calls_with_Post_http_request(String string) {
+	@When("user calls {string} with {string} http request")
+	public void user_calls_with_http_request(String resource, String method) {
+		//constructor will be called with value of resource
+		APIResources resourceAPI = APIResources.valueOf(resource);
 		responseSpecification = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
-		response = res.when().post("maps/api/place/add/json").then().spec(responseSpecification).extract().response();
+		if(method.equalsIgnoreCase("POST"))
+		response = res.when().post(resourceAPI.getResource());
+		else if(method.equalsIgnoreCase("GET"))
+			response = res.when().get(resourceAPI.getResource());
 	}
 
 	@Then("the API call is success with status code {int}")
