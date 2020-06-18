@@ -6,6 +6,7 @@ Feature: Validating place API'S
     Then the API call is success with status code 200
     And "status" in respose body is "OK"
     And "scope" in respose body is "APP"
+    And verify place_Id craeted maps to "<Name>" using "getPlaceAPI"
 
     Examples: 
       | Name    | Language | Address            |
