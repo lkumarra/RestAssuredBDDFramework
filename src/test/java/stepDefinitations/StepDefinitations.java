@@ -3,6 +3,8 @@ package stepDefinitations;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
+import java.util.HashMap;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,7 +23,7 @@ public class StepDefinitations extends Utils {
 	RequestSpecification res;
 	ResponseSpecification responseSpecification;
 	Response response;
-	String place_id;
+	static String place_id;
 	TestDataBuild testData = new TestDataBuild();
 	
 	@Given("Add Place Payload with {string}{string} and {string}")
@@ -32,7 +34,7 @@ public class StepDefinitations extends Utils {
 	@When("user calls {string} with {string} http request")
 	public void user_calls_with_http_request(String resource, String method) {
 		APIResources resourceAPI = APIResources.valueOf(resource);
-		responseSpecification = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+		responseSpecification = new ResponseSpecBuilder().build();
 		if(method.equalsIgnoreCase("POST"))
 		response = res.when().post(resourceAPI.getResource());
 		else if(method.equalsIgnoreCase("GET"))
@@ -55,6 +57,24 @@ public class StepDefinitations extends Utils {
 		res = given().spec(requestSpecification()).queryParam("place_id", place_id);
 		user_calls_with_http_request(resource, "GET");
 		assertEquals(getJsonPath(response, "name"), Name);
+	}
+	
+	@Given("Delete place payload")
+	public void delete_place_payload() {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("place_id",place_id);
+		System.out.println(place_id);
+	    res= given().spec(requestSpecification()).body(map).contentType(ContentType.JSON);
+	}
+	
+	@Then("Api call got success with status code {int}")
+	public void api_call_got_success_with_status_code(Integer int1) {
+	   assertEquals(response.statusCode(), 200);
+	}
+
+	@Then("{string} in responce body is {string}")
+	public void in_responce_body_is(String jsonKey, String value) {
+	assertEquals(getJsonPath(response, jsonKey), value);
 	}
 
 }
